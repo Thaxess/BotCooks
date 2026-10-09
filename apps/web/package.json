@@ -1,0 +1,40 @@
+{
+  "name": "@botcooks/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@botcooks/ai": "0.1.0",
+    "@botcooks/database": "0.1.0",
+    "@botcooks/discord": "0.1.0",
+    "@botcooks/security": "0.1.0",
+    "@botcooks/services": "0.1.0",
+    "@botcooks/shared": "0.1.0",
+    "@botcooks/workflows": "0.1.0",
+    "@discordjs/rest": "2.6.3",
+    "@xyflow/react": "12.12.0",
+    "discord-api-types": "0.38.56",
+    "drizzle-orm": "0.45.3",
+    "next": "16.4.0",
+    "pg": "8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "0.0.1",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "postcss": "8.5.29",
+    "tailwindcss": "4.3.3"
+  }
+}

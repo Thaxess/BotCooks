@@ -1,0 +1,21 @@
+/** Names of BotCooks' built-in slash commands. Custom commands may not reuse them. */
+export const BUILTIN_COMMAND_NAMES: ReadonlySet<string> = new Set([
+  'build-server',
+  'warn',
+  'timeout',
+  'untimeout',
+  'kick',
+  'ban',
+  'unban',
+  'purge',
+  'note',
+  'case',
+  'lockdown',
+  'rank',
+  'leaderboard',
+  'ticket-panel',
+  'giveaway',
+  'poll',
+  'appeal',
+  'botcooks',
+]);

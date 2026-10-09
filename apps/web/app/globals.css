@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+
+/* BotCooks: dark kitchen palette - charcoal surfaces, warm ember accents. */
+@theme {
+  --color-coal-950: #0c0a09;
+  --color-coal-900: #141110;
+  --color-coal-850: #1a1614;
+  --color-coal-800: #221d1a;
+  --color-coal-700: #2f2824;
+  --color-coal-600: #423833;
+  --color-coal-500: #6b5e57;
+  --color-coal-400: #9a8c84;
+  --color-coal-300: #c4b8b0;
+  --color-coal-100: #f2ece8;
+  --color-ember-300: #fdba74;
+  --color-ember-400: #fb923c;
+  --color-ember-500: #f97316;
+  --color-ember-600: #ea580c;
+  --color-basil-400: #4ade80;
+  --color-basil-500: #22c55e;
+  --color-chili-400: #f87171;
+  --color-chili-500: #ef4444;
+  --color-saffron-400: #facc15;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-coal-950);
+  color: var(--color-coal-100);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus everywhere. */
+:focus-visible {
+  outline: 2px solid var(--color-ember-400);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  background: var(--color-ember-500);
+  color: var(--color-coal-950);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* React Flow theming for the visual builders. */
+.react-flow {
+  --xy-background-color: var(--color-coal-900);
+  --xy-node-background-color: var(--color-coal-800);
+  --xy-node-color: var(--color-coal-100);
+  --xy-node-border: 1px solid var(--color-coal-600);
+  --xy-edge-stroke: var(--color-coal-500);
+  --xy-handle-background-color: var(--color-ember-500);
+  --xy-controls-button-background-color: var(--color-coal-800);
+  --xy-controls-button-color: var(--color-coal-100);
+  --xy-controls-button-border-color: var(--color-coal-600);
+  --xy-minimap-background-color: var(--color-coal-850);
+}

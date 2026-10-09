@@ -1,0 +1,19 @@
+{
+  "name": "@botcooks/services",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@botcooks/ai": "0.1.0",
+    "@botcooks/database": "0.1.0",
+    "@botcooks/discord": "0.1.0",
+    "@botcooks/security": "0.1.0",
+    "@botcooks/shared": "0.1.0",
+    "@botcooks/workflows": "0.1.0",
+    "@discordjs/rest": "2.6.3",
+    "drizzle-orm": "0.45.3"
+  }
+}

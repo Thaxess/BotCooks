@@ -1,0 +1,53 @@
+# Self-hosted BotCooks: PostgreSQL + dashboard + gateway bot + worker.
+# 1. cp .env.example .env and fill it in   2. docker compose up -d --build
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: botcooks
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: botcooks
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U botcooks -d botcooks']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    # Not published to the host: only the apps can reach the database.
+
+  worker:
+    build: { context: ., target: worker }
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://botcooks:${POSTGRES_PASSWORD}@postgres:5432/botcooks
+      RUN_MIGRATIONS: 'true'
+    depends_on:
+      postgres: { condition: service_healthy }
+
+  bot:
+    build: { context: ., target: bot }
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://botcooks:${POSTGRES_PASSWORD}@postgres:5432/botcooks
+    depends_on:
+      postgres: { condition: service_healthy }
+      worker: { condition: service_started }
+
+  web:
+    build: { context: ., target: web }
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://botcooks:${POSTGRES_PASSWORD}@postgres:5432/botcooks
+    ports:
+      - '${WEB_PORT:-3000}:3000'
+    depends_on:
+      postgres: { condition: service_healthy }
+      worker: { condition: service_started }
+
+volumes:
+  pgdata:

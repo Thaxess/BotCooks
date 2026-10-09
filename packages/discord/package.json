@@ -1,0 +1,15 @@
+{
+  "name": "@botcooks/discord",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@botcooks/shared": "0.1.0",
+    "@botcooks/workflows": "0.1.0",
+    "@discordjs/rest": "2.6.3",
+    "discord-api-types": "0.38.56"
+  }
+}

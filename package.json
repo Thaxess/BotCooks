@@ -1,0 +1,35 @@
+{
+  "name": "botcooks",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "npm@11.12.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w @botcooks/web",
+    "dev:bot": "npm run dev -w @botcooks/bot",
+    "dev:worker": "npm run dev -w @botcooks/worker",
+    "build:web": "npm run build -w @botcooks/web",
+    "db:generate": "npm run generate -w @botcooks/database",
+    "db:migrate": "npm run migrate -w @botcooks/database",
+    "commands:register": "npm run commands:register -w @botcooks/bot",
+    "typecheck": "tsc -p tsconfig.check.json --noEmit && npm run typecheck -w @botcooks/web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run test:e2e -w @botcooks/web",
+    "dev:db": "pglite-server --db=.pglite/dev --port=54329 --max-connections=20"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite-socket": "0.2.11",
+    "@types/node": "24.19.1",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "vitest": "4.1.11"
+  }
+}
